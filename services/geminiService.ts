@@ -2,8 +2,8 @@
 import { GoogleGenAI } from "@google/genai";
 import { PERSONAL_INFO, PROJECTS, EXPERIENCES } from '../constants';
 
-// Fix: Always use named parameter for apiKey and obtain it exclusively from process.env.API_KEY.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Fix: Always use named parameter for apiKey and obtain it exclusively from process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT'.
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'FAKE_API_KEY_FOR_DEVELOPMENT' });
 
 export const getAIResponse = async (userMessage: string) => {
   const context = `
