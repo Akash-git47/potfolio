@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elite Personal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        scroll-behavior: smooth;
+        background-color: #fff;
+        /* Hide default cursor globally if preferred, or just on interactives */
+        cursor: none;
+      }
+      
+      a, button, [role="button"], input, textarea, select {
+        cursor: none;
+      }
+
+      /* Professional Grid Background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 32px 32px;
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: -1;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .text-gradient {
+        background: linear-gradient(180deg, #111827 0%, #4b5563 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      @keyframes float-glide {
+        0%, 100% { transform: translateY(0) rotate(0); }
+        50% { transform: translateY(-40px) rotate(3deg); }
+      }
+      @keyframes slow-rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes mesh-pulse {
+        0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.3; }
+        33% { transform: scale(1.2) translate(10%, -5%); opacity: 0.5; }
+        66% { transform: scale(0.8) translate(-5%, 10%); opacity: 0.4; }
+      }
+      @keyframes reveal {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0px); }
+      }
+      @keyframes footer-reveal {
+        0% { opacity: 0; transform: translateY(80px); filter: blur(15px); }
+        100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      }
+      @keyframes slide-down {
+        from { opacity: 0; transform: translateY(-100%); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes icon-flash {
+        0% { background-color: rgba(79, 70, 229, 0); }
+        50% { background-color: rgba(79, 70, 229, 0.2); }
+        100% { background-color: rgba(79, 70, 229, 0); }
+      }
+
+      .animate-float-glide {
+        animation: float-glide 12s ease-in-out infinite;
+      }
+      .animate-slow-rotate {
+        animation: slow-rotate 15s linear infinite;
+      }
+      .animate-mesh {
+        animation: mesh-pulse 20s ease-in-out infinite;
+      }
+
+      /* Base Reveal State */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: none;
+      }
+
+      /* Triggered Reveal State */
+      .reveal.active {
+        animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* Specialized Footer Reveal */
+      .footer-reveal {
+        opacity: 0;
+        transform: translateY(80px);
+        filter: blur(15px);
+      }
+      .footer-reveal.active {
+        animation: footer-reveal 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .social-flash:hover {
+        animation: icon-flash 0.6s ease-out;
+      }
+
+      /* Instant animation for load */
+      .animate-reveal {
+        animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .animate-slide-down {
+        animation: slide-down 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* Enhanced Delay Utilities */
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+      .delay-400 { animation-delay: 400ms; }
+      .delay-500 { animation-delay: 500ms; }
+      .delay-600 { animation-delay: 600ms; }
+      .delay-700 { animation-delay: 700ms; }
+      .delay-800 { animation-delay: 800ms; }
+      .delay-900 { animation-delay: 900ms; }
+      .delay-1000 { animation-delay: 1000ms; }
+      
+      ::selection {
+        background: #4f46e5;
+        color: white;
+      }
+
+      [data-reveal] {
+        opacity: 0;
+      }
+
+      /* Custom Cubic Easings */
+      .cubic-bezier-standard {
+        transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Custom Cursor styles */
+      #custom-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        background-color: #4f46e5;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+      }
+
+      #custom-cursor.hovering {
+        width: 48px;
+        height: 48px;
+        background-color: transparent;
+        border: 1.5px solid #4f46e5;
+        mix-blend-mode: normal;
+      }
+
+      #custom-cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 4px;
+        background-color: #4f46e5;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Helper for nested animations triggered by the 'active' reveal class */
+      .group.active .group-\[.active\]\:w-\[var\(--skill-width\)\],
+      .reveal.active .group-\[.active\]\:w-\[var\(--skill-width\)\] {
+        width: var(--skill-width) !important;
+      }
+      .group.active .group-\[.active\]\:opacity-100,
+      .reveal.active .group-\[.active\]\:opacity-100,
+      .reveal.active .group-\[.active\]\:opacity-10,
+      .reveal.active .group-\[.active\]\:translate-x-\[100px\],
+      .reveal.active .group-\[.active\]\:translate-x-\[-100px\],
+      .reveal.active .group-\[.active\]\:scale-y-100 {
+        opacity: var(--tw-opacity, 1) !important;
+        transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body class="text-slate-900 antialiased overflow-x-hidden">
+    <div id="root"></div>
+  </body>
+</html>
