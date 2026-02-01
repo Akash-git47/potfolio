@@ -52,8 +52,8 @@ export interface DetailedProject extends Project {
 export const PERSONAL_INFO = {
   name: "S.AKASH",
   role: "Senior Product Designer & Creative Developer",
-  bio: "I bridge the gap between complex engineering and intuitive user experience. With a decade of experience at the intersection of design and code, I build digital products that aren't just beautiful—they work flawlessly and drive measurable business growth.",
-  positioning: "A decade of experience building for the world's most ambitious companies. I don't just push pixels; I solve business problems through systems-thinking and technical precision.",
+  bio: "I bridge the gap between complex engineering and intuitive user experience. With five years of experience at the intersection of design and code, I build digital products that aren't just beautiful—they work flawlessly and drive measurable business growth.",
+  positioning: "Five years of experience building for the world's most ambitious companies. I don't just push pixels; I solve business problems through systems-thinking and technical precision.",
   email: "hello@s-akash.design",
   socials: {
     twitter: "https://twitter.com",
@@ -65,7 +65,7 @@ export const PERSONAL_INFO = {
 export const METRICS: Metric[] = [
   {
     label: "Experience",
-    value: "10+",
+    value: "5+",
     description: "Years engineering high-performance digital products for global industry leaders."
   },
   {

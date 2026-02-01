@@ -71,7 +71,7 @@ const About: React.FC = () => {
             
             <div className="grid grid-cols-2 md:grid-cols-3 gap-12 pt-4 border-t border-slate-100 reveal delay-400">
               <div>
-                <p className="text-4xl font-black text-slate-900 tracking-tighter">10+</p>
+                <p className="text-4xl font-black text-slate-900 tracking-tighter">5+</p>
                 <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mt-2">Years of Impact</p>
               </div>
               <div>

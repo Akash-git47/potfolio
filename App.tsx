@@ -15,7 +15,6 @@ import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
-import ChatWidget from './components/ChatWidget';
 import CaseStudy from './components/CaseStudy';
 import SectionDivider from './components/SectionDivider';
 import TableOfContents from './components/TableOfContents';
@@ -79,7 +78,6 @@ const App: React.FC = () => {
       <Contact />
       <CTA />
       <Footer />
-      <ChatWidget />
 
       {/* Detail Overlay */}
       {selectedProject && (
